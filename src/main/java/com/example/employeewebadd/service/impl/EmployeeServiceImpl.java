@@ -1,4 +1,4 @@
-package com.example.employeewebadd.impl;
+package com.example.employeewebadd.service.impl;
 
 import com.example.employeewebadd.exeption.EmployeeAlreadyAddedException;
 import com.example.employeewebadd.exeption.EmployeeNotFoundExeption;
