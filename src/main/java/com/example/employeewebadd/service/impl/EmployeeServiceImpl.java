@@ -1,14 +1,15 @@
 package com.example.employeewebadd.service.impl;
 
+import org.springframework.stereotype.Service;
 import com.example.employeewebadd.exeption.EmployeeAlreadyAddedException;
 import com.example.employeewebadd.exeption.EmployeeNotFoundExeption;
 import com.example.employeewebadd.model.Employee;
 import com.example.employeewebadd.service.EmployeeService;
-import org.springframework.stereotype.Service;
+
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.Map;
 
 @Service
@@ -16,7 +17,7 @@ import java.util.Map;
 public class EmployeeServiceImpl implements EmployeeService {
     private  final Map<String,Employee> employees;
 
-    public EmployeeServiceImpl(List<Employee> employees) {
+    public EmployeeServiceImpl() {
 
         this.employees = new HashMap<>();
     }
@@ -24,20 +25,20 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee add(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
-        if (employees.containsKey(employee.getFyllName())){
+        if (employees.containsKey(employee.getFullName())){
             throw new EmployeeAlreadyAddedException();
         }
-        employees.put(employee.getFyllName(),employee);
+        employees.put(employee.getFullName(),employee);
         return employee;
     }
 
     @Override
     public Employee remove(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
-        if (!employees.containsKey(employee.getFyllName())){
+        if (!employees.containsKey(employee.getFullName())){
             throw new EmployeeNotFoundExeption();
         }
-        employees.remove(employee.getFyllName(),employee);
+        employees.remove(employee.getFullName());
         return employee;
 
     }
@@ -45,7 +46,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee find(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
-        if (!employees.containsKey(employee.getFyllName())){
+        if (!employees.containsKey(employee.getFullName())){
             throw new EmployeeNotFoundExeption();
 
         }

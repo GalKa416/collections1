@@ -16,7 +16,7 @@ public class Employee {    private final String firstName;
     public String getLastName() {
         return lastName;
     }
-    public String getFyllName() {
+    public String getFullName() {
         return firstName+" "+lastName;
     }
 
