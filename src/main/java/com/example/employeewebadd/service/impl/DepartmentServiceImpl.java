@@ -2,6 +2,7 @@ package com.example.employeewebadd.service.impl;
 
 import com.example.employeewebadd.exeption.EmployeeNotFoundExeption;
 import com.example.employeewebadd.model.Employee;
+import com.example.employeewebadd.service.DepartmentService;
 import com.example.employeewebadd.service.EmployeeService;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.example.employeewebadd.service.impl;
+package com.example.employeewebadd.service;
 
 import com.example.employeewebadd.model.Employee;
 

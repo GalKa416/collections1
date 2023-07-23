@@ -1,8 +1,7 @@
 package com.example.employeewebadd.controller;
 
 import com.example.employeewebadd.model.Employee;
-import com.example.employeewebadd.service.impl.DepartmentService;
-import org.springframework.stereotype.Service;
+import com.example.employeewebadd.service.DepartmentService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,5 +1,6 @@
 package com.example.employeewebadd.service.impl;
 
+import com.example.employeewebadd.service.EmployeeValidationService;
 import org.springframework.stereotype.Service;
 import com.example.employeewebadd.exeption.EmployeeAlreadyAddedException;
 import com.example.employeewebadd.exeption.EmployeeNotFoundExeption;
@@ -9,15 +10,19 @@ import com.example.employeewebadd.service.EmployeeService;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.*;
 import java.util.Map;
+
+import static org.apache.commons.lang3.StringUtils.capitalize;
+
 
 @Service
 
 public class EmployeeServiceImpl implements EmployeeService {
     private final Map<String, Employee> employees;
+    private final EmployeeValidationService validationService;
 
-    public EmployeeServiceImpl() {
+    public EmployeeServiceImpl(EmployeeValidationService validationService) {
+        this.validationService = validationService;
 
         this.employees = new HashMap<>();
 
@@ -26,21 +31,22 @@ public class EmployeeServiceImpl implements EmployeeService {
         add("Stepan", "Stepanov");
         add("Sergey", "Sergeev");
         add("Andrev", "Andreev");
-        add("Nikolay", "Nikolaev");
+        add("Nikolay", "nikolaev");
     }
 
 
     @Override
     public Employee add(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
-
+        validationService.validate(firstName,lastName);
+        Employee employee = new Employee(capitalize (firstName), capitalize(lastName));
 
         return add(employee);
     }
 
     @Override
     public Employee add(String firstName, String lastName, int salary, int departmentId) {
-        Employee employee = new Employee(firstName, lastName, salary, departmentId);
+        validationService.validate(firstName,lastName);
+        Employee employee = new Employee(capitalize (firstName), capitalize(lastName), salary, departmentId);
 
         return add(employee);
     }
