@@ -37,22 +37,22 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee add(String firstName, String lastName) {
-        validationService.validate(firstName,lastName);
-        Employee employee = new Employee(capitalize (firstName), capitalize(lastName));
+        validationService.validate(firstName, lastName);
+        Employee employee = new Employee(capitalize(firstName), capitalize(lastName));
 
         return add(employee);
     }
 
     @Override
     public Employee add(String firstName, String lastName, int salary, int departmentId) {
-        validationService.validate(firstName,lastName);
-        Employee employee = new Employee(capitalize (firstName), capitalize(lastName), salary, departmentId);
+        validationService.validate(firstName, lastName);
+        Employee employee = new Employee(capitalize(firstName), capitalize(lastName), salary, departmentId);
 
         return add(employee);
     }
 
     @Override
-    public Employee remove(String firstName, String lastName)  {
+    public Employee remove(String firstName, String lastName) {
         Employee employee = new Employee(firstName, lastName);
 
         if (!employees.containsKey(employee.getFullName())) {
